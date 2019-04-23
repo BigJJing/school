@@ -1,0 +1,75 @@
+/* component/landlord-component/minePage-component/minePage-component.wxss */
+.mine{
+  margin:0;
+}
+.mine .header{
+  height: 120px;
+  text-align: center;
+  padding-top:30px;
+  padding-bottom:20px;
+  background-color: #fff;
+
+}
+.mine .header .img{
+  width:60px;
+  height: 60px;
+  overflow: hidden;
+  margin:0 auto;
+  border-radius:30px;
+}
+.mine .header .img image{
+  width:60px;
+  height: 60px;
+}
+.mine .header .img open-data{
+  width:60px;
+  height: 60px;
+}
+.mine .header .user{
+  width: 40%;
+  padding-top:20px;
+  padding-bottom:10px;
+  margin:0 auto;
+  font-size:18px;
+}
+.mine .header .user button{
+  border-radius:20px;
+  font-size: 14px;
+  line-height: 3;
+}
+.mine .menu{
+  margin-bottom:100px;
+}
+.mine .menu .title{
+  font-size:14px;
+  color:#808080;
+  margin-top:.77em;
+  margin-bottom:.3em;
+  padding:0 15px;
+}
+.mine .menu .set{
+  padding:10px 15px;
+  background-color: #fff;
+  font-size:17px;
+  line-height: 1.47;
+  border-bottom:1px solid #f8f8f8;
+}
+.mine .menu .set .ft{
+  padding-right:13px;
+  color:#808080;
+  float:right;
+  position: relative;
+}
+.mine .menu .set .ft::after{
+  content:"";
+  display: inline-block;
+  width:6px;
+  height: 6px;
+  border-top:2px solid #C8C8CD;
+  border-right:2px solid #C8C8CD;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top:50%;
+  margin-top:-4px;
+  right:2px;
+}

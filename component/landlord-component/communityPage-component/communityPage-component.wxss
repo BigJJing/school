@@ -1,0 +1,238 @@
+/* component/landlord-component/communityPage-component/communityPage-component.wxss */
+@import "../../../static/css/weui.wxss";
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1555139595003'); /* IE9 */
+  src: url('iconfont.eot?t=1555139595003#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+  url('iconfont.woff?t=1555139595003') format('woff'),
+  url('iconfont.ttf?t=1555139595003') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1555139595003#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoucang:before {
+  content: "\e86d";
+}
+
+.icon-shoucang1:before {
+  content: "\e86e";
+}
+
+.icon-xihuan:before {
+  content: "\e86f";
+}
+
+.icon-xihuan1:before {
+  content: "\e870";
+}
+
+.icon-huodongxiangqu:before {
+  content: "\e88d";
+}
+
+.icon-huodongxiangqu1:before {
+  content: "\e88e";
+}
+
+.icon-pinglun:before {
+  content: "\e891";
+}
+
+.icon-wo:before {
+  content: "\e68f";
+}
+
+.icon-icon_add:before {
+  content: "\eb8f";
+}
+
+.icon-icon_addmessage:before {
+  content: "\eb90";
+}
+
+.icon-icon_discovery:before {
+  content: "\eb93";
+}
+
+.icon-icon_setting:before {
+  content: "\eb9d";
+}
+
+.icon-icon_homepage_fill:before {
+  content: "\ebaa";
+}
+
+.icon-icon_message_fill:before {
+  content: "\ebac";
+}
+
+.icon-icon_meeting_fill:before {
+  content: "\ebab";
+}
+
+
+
+
+
+.community .weui-search-bar{
+  border:none;
+  background-color: transparent;
+}
+.community .mine{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(to bottom right, #54b5b7 , #67deb5);
+  font-size:50rpx;
+  font-weight: bold;
+  color:#fff;
+  position: fixed;
+  bottom:320rpx;
+  right:50rpx;
+  overflow: hidden;
+  transition:width 0.5s ease-in-out;
+}
+.community .add{
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(to bottom right, #54b5b7 , #67deb5);
+  font-size:50rpx;
+  font-weight: bold;
+  color:#fff;
+  position: fixed;
+  bottom:200rpx;
+  right:50rpx;
+  overflow: hidden;
+  transition:width 0.5s ease-in-out;
+}
+.community .mine view{
+  width: 100rpx;
+  border-radius:50rpx;
+  text-align: center;
+  font-size:40rpx;
+  line-height: 100rpx;
+}
+.community .add_long{
+width:430rpx;
+}
+.community .add_short{
+width:100rpx;
+}
+.community .add view{
+  width: 100rpx;
+  border-radius:50rpx;
+  text-align: center;
+  font-size:40rpx;
+}
+.community .add navigator{
+  width: 100rpx;
+  border-radius:50rpx;
+  text-align: center;
+  font-size:40rpx;
+}
+.community .add navigator p{
+  font-size: 18rpx;
+}
+.community .add .add-icon{
+  display:inline-block;
+  position: absolute;
+  right:0rpx;
+  top:0rpx;
+  line-height: 100rpx; 
+}
+.community .add .add-active{
+  display:inline-block;
+  position: absolute;
+  right:100rpx;
+  top:0rpx;
+  line-height: 30rpx;
+  margin-top:20rpx;
+}
+.community .add .add-text{
+  display:inline-block;
+  position: absolute;
+  right:200rpx;
+  top:0rpx;
+  line-height: 30rpx;
+  margin-top:20rpx;
+}
+.community .add .add-management{
+  display:inline-block;
+  position: absolute;
+  right:300rpx;
+  top:0rpx;
+  line-height: 30rpx;
+  margin-top:20rpx;
+}
+.community .header{
+  position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  background: #f8f8f8;
+}
+.community .header .tab{
+  height: 50rpx;
+  width: 100%;
+}
+.community .header .tab view{
+  width: calc(50% - 40rpx);
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  float:left;
+  text-align: center;
+  color:#808080;
+  margin:0 20rpx;
+}
+.community .header .tab .selected{
+  border-bottom:1px solid #54b5b7;
+  color:#54b5b7
+}
+
+/* articles page */
+.community .community_main{
+  margin-top:160rpx;
+}
+.community .community_main .articles .box{
+  border:1px solid red;
+  padding:20rpx;
+}
+.community .community_main .articles .box .top{
+  height: 60rpx;
+}
+.community .community_main .articles .box .top view{
+  float:left;
+}
+.community .community_main .articles .box .top .img{
+  width:60rpx;
+  height: 60rpx;
+  border-radius:50rpx;
+  overflow: hidden;
+  border:1px solid red;
+}
+
+.community .community_main .articles .box .top .img image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.community .community_main .articles .box .top .name{
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color:#808080;
+  padding-left:30rpx;
+}
+.community .community_main .articles .box .center{
+
+}
+.community .community_main .articles .box .center .txt{
+  font-size:30rpx;
+  color:#333;
+}

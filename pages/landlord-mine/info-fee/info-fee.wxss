@@ -1,0 +1,2 @@
+/* pages/landlord-mine/info-fee/info-fee.wxss */
+@import "/pages/landlord-mine/info-apartment/info-apartment.wxss";

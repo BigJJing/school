@@ -1,0 +1,44 @@
+/* component/public-component/uploadImages/uploadImages.wxss */
+.upload-box{
+  width:100%;
+  background: #fff
+}
+.upload-box .add{
+  display: inline-block;
+  width: 79px;
+  height: 79px;
+  margin-right:9px;
+  margin-left:25px;
+  margin-bottom: 9px;
+  margin-top:10px;
+  position: relative;
+  vertical-align: top;
+  font-size: 30px;
+  font-weight:100;
+  line-height:79px; 
+  text-align: center;
+  background-color:#F2F2F2;
+  color:#AAAAAA;
+ 
+}
+.upload-box .img{
+  display: inline-block;
+  width: 79px;
+  height: 79px;
+  margin-right:9px;
+  margin-left:25px;
+  margin-bottom: 9px;
+  margin-top:10px;
+  position: relative;
+}
+.upload-box .img image{
+  width:79px;
+  height: 79px;
+}
+.upload-box .img icon{
+  position: absolute;
+  top:-10px;
+  left:-10px;
+  font-size:20px;
+  color:rgb(230, 67, 64);
+}

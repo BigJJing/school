@@ -1,0 +1,114 @@
+<!--pages/landlord-mine/modify-room/modify-room.wxml-->
+<view class="wrapper">
+  <form bindsubmit='submitForm'>
+      <!-------- 基本信息（必填）------->
+    <view class="cells-title">基本信息</view>
+    <!--类型名 -->
+    <view class="cell">
+      <view class="hd">
+        <label>类型名<text class="important">*</text></label>
+      </view>
+      <view class="bd">
+        <input type="text" placeholder='如“类型1”' maxlength='14' name="type" value="{{typeName}}"/>
+      </view>
+    </view>
+    <!--房型 -->
+    <picker range="{{roomTypeArr}}" mode="multiSelector" value="{{rindex}}" bindchange="changeRoomType" >
+      <view class="cell">
+        <view class="hd">
+          <label>房型<text class="important">*</text></label>
+        </view>
+        <view class="bd">
+          <text class="bd-text">{{roomTypeArr[0][rindex[0]]}}室{{roomTypeArr[1][rindex[1]]}}厅</text>
+        </view>
+      </view>
+    </picker>
+    
+    <!-- 租金 -->
+    <view class="cell rent-cell">
+      <view class="hd">
+        <label>月租金<text class="important">*</text></label>
+      </view>
+      <view class="bd">
+        <input type="number" placeholder='如“2000”' maxlength='10' name="monthRent"  value="{{monthRent}}"/>
+      </view>
+    </view>
+    <!-- 押付 -->
+    <picker range="{{roomTypeArr}}" mode="multiSelector" value="{{dindex}}" bindchange="changeDeposit" >
+      <view class="cell">
+        <view class="hd">
+          <label>押付<text class="important">*</text></label>
+        </view>
+        <view class="bd">
+          <text class="bd-text">押{{roomTypeArr[0][dindex[0]]}}付{{roomTypeArr[1][dindex[1]]}}</text>
+        </view>
+      </view>
+    </picker>
+    <!----------- 详细信息 ------------->
+    <view class="cells-title">详细信息</view>
+    <!-- 面积 -->
+    <view class="cell area-cell">
+      <view class="hd">
+        <label>面积</label>
+      </view>
+      <view class="bd">
+        <input type="number" placeholder='如“100”' maxlength='6' name="area"  value="{{area}}"/>
+      </view>
+    </view>
+    <!-- 房屋配套 -->
+    <view class="cell config-cell">
+      <view class="hd">
+        <label>房间配置</label>
+      </view>
+      <view class="bd">
+        <input type="number" maxlength='0'/>
+      </view>
+      <view class="icon-group">
+        <view class="icon" wx:for="{{roomConfig}}" wx:key="id"  bindtap="addConfig" id="{{item._id}}">
+          <image src="{{item.url}}"></image>
+          <view>{{item.name}}</view>
+          <view class="mask" wx:if="{{item.isSelected}}">
+            <icon type="success_no_circle" color="#FCDC3F" size="30px"></icon>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <!-- 图片 -->
+    <view class="cell image-cell">
+      <view class="hd">
+        <label>图片</label>
+      </view>
+      <view class="bd">
+        <text>{{roomImageNum}}/8</text>
+      </view>  
+    </view>
+    <view class="images-cell-add">
+      <uploadImages bind:myevent="imagesEvent" wx-if="{{pageType == 'add'}}"></uploadImages>
+      <uploadImages bind:myevent="imagesEvent" images="{{existenceImage}}" wx-if="{{pageType == 'change'}}"></uploadImages>
+    </view>
+    <!----------- 其他信息 ------------->
+    <view class="cells-title">默认发布信息</view>
+    <!-- 租金 -->
+    <view class="cell">
+      <view class="hd">
+        <label>发布的标题</label>
+      </view>
+      <view class="bd">
+        <input type="text" placeholder='发布信息时显示的标题' maxlength='14' name="publishTitle" value="{{publishTitle}}"/>
+      </view>
+    </view>
+    <view class="cell description-cell">
+      <view class="hd">
+        <label>描述</label>
+      </view>
+      <view class="bd">
+        <textarea placeholder='对此类型房间的大概描述，尤其是吸引客户的点' name="publishDescription" value='{{publishDescription}}'></textarea>
+      </view>
+    </view>
+    
+    <view class="btns">
+      <button form-type='submit' class="subBtn">提交</button>
+      <button class="delBtn" wx:if="{{pageType=='change'}}" bindtap="deleteRoomType">删除</button>
+    </view>
+  </form>
+</view>

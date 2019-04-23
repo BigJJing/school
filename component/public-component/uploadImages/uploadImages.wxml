@@ -1,0 +1,15 @@
+<!--component/public-component/uploadImages/uploadImages.wxml-->
+<view class="upload-box">
+<!--
+  <view>
+    <image src='{{imgUrl}}' mode="aspectFit" ></image> 
+  </view>
+-->    
+    <view class="img" wx:for="{{imgUrl}}" wx:key="{{index}}">
+      <image src="{{item}}"></image>
+      <icon type="clear" bindtap='doDelete' id="{{index}}"></icon>
+    </view>
+    <!-- 添加图片 --->
+    <view class="add" bindtap='doUpload' wx:if="{{count<8}}">+</view>
+
+</view>

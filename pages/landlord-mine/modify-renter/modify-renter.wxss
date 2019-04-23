@@ -1,0 +1,15 @@
+/* pages/landlord-mine/modify-renter/modify-renter.wxss */
+page{
+  background-color: #f8f8f8;
+}
+.wrapper{
+  padding-top:20px;
+}
+.name{
+  background-color: #fff;
+  padding:10px 15px;
+  font-size:17px;
+}
+.btn{
+  margin:1.17647059em 15px 0.3em;
+}

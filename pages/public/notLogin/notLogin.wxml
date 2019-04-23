@@ -1,0 +1,5 @@
+<!--pages/public/notLogin/notLogin.wxml-->
+<view class="container">
+  <image src="/static/images/notLogin.png" class="img" />
+  <view class="text">还没有登录呢~</view>
+</view>

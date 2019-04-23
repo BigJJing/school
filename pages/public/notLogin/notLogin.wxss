@@ -1,0 +1,11 @@
+/* pages/public/notLogin/notLogin.wxss */
+page{
+  background-color:#f8f8f8;
+}
+.img{
+  width:200px;
+  height: 200px;
+}
+.text{
+  font-size:16px;
+}

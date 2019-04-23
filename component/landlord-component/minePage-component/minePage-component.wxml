@@ -1,0 +1,59 @@
+<!--component/landlord-component/minePage-component/minePage-component.wxml-->
+<view class="mine">
+  <view class="header">
+    <view class="img">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="user">
+      <open-data type="userNickName"></open-data>
+    </view>
+  </view>
+  <view class="menu">
+    <!-- 信息设置 -->
+    <view class="info-set">
+      <view class="title">信息</view>
+      <navigator url="/pages/landlord-mine/info-apartment/info-apartment">
+        <view class="set">       
+          <text class="bd">公寓基本信息</text>
+          <text class="ft">说明文字</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/landlord-mine/info-renter/info-renter">
+        <view class="set">
+          <text class="bd">房东信息</text>
+          <text class="ft">说明文字</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/landlord-mine/info-room/info-room">
+        <view class="set">
+          <text class="bd">房型信息</text>
+          <text class="ft">说明文字</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/landlord-mine/info-fee/info-fee">
+        <view class="set">
+          <text class="bd">费用信息</text>
+          <text class="ft">说明文字</text>
+        </view>
+      </navigator>
+    </view>
+
+    <!--常用设置 -->
+    <view class="fre-set">
+      <view class="title">设置</view>
+      <view class="set">
+        <text class="bd">常用设置</text>
+        <text class="ft">说明文字</text>
+      </view>
+    </view>
+    <!-- 使用帮助 -->
+    <view class="help-set">
+      <view class="title">帮助</view>
+      <view class="set">
+        <text class="bd">使用帮助</text>
+        <text class="ft">说明文字</text>
+      </view>
+    </view>
+
+  </view>
+</view>

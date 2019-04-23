@@ -1,0 +1,13 @@
+/* pages/landlord-community/writeActive/writeActive.wxss */
+@import "../../../static/css/weui.wxss";
+.end_line{
+  border-bottom:1px solid #e5e5e5;
+}
+.active .btn{
+  padding: 10px 15px;
+  margin-top:30rpx;
+}
+.active .btn button{
+  background-color: #1AAD19;
+  color:#fff;
+}

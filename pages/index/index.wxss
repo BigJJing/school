@@ -1,0 +1,20 @@
+/**index.wxss**/
+.enter-tip{
+  margin-top:30%;
+  text-align: center;
+  font-size: 16px;
+}
+.btns{
+  width:60%;
+  padding:15px 0;
+  margin:0 auto;
+}
+.btns button{
+  border:1px solid #353535;
+  background-color:transparent;
+  padding:0 14px;
+  font-size:18px;
+  border-radius:5px;
+  color:#353535;
+  margin-top:15px;
+}

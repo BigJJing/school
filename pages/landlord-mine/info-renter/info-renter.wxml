@@ -1,0 +1,29 @@
+<!--pages/landlord-mine/info-renter/info-renter.wxml-->
+<!--pages/landlord-mine/info-apartment/info-apartment.wxml-->
+<view class="ia-menu">
+  <navigator open-type='navigate' url="/pages/landlord-mine/modify-renter/modify-renter?type=name">
+    <view class="set">       
+      <text class="bd">姓名</text>
+      <text class="ft">{{renterName}}</text>
+    </view>
+  </navigator>
+  <picker value="{{index}}" range="{{sexArray}}" bindchange="sexChange"  >
+    <view class="set">       
+      <text class="bd">性别</text>
+      <text class="ft">{{sexArray[index]}}</text>
+    </view>
+  </picker>
+  <navigator open-type='navigate' url="/pages/landlord-mine/modify-renter/modify-renter?type=tel">
+    <view class="set">       
+      <text class="bd">联系电话</text>
+      <text class="ft">{{renterTel}}</text>
+    </view>
+  </navigator>
+ <navigator open-type='navigate' url="/pages/landlord-mine/modify-renter/modify-renter?type=idCard">
+    <view class="set">       
+      <text class="bd">身份证件</text>
+      <text class="ft">{{idCard}}</text>
+    </view>
+  </navigator>
+</view>
+

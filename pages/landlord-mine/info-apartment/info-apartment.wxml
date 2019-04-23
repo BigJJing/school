@@ -1,0 +1,27 @@
+<!--pages/landlord-mine/info-apartment/info-apartment.wxml-->
+<view class="ia-menu">
+  <navigator open-type='navigate' url="/pages/landlord-mine/modify-apartmentName/modify-apartmentName?type=name">
+    <view class="set">       
+      <text class="bd">公寓名</text>
+      <text class="ft">{{apartmentName}}</text>
+    </view>
+  </navigator>
+  <picker mode="region" value="{{region}}" bindchange="regionChange"  >
+    <view class="set">       
+      <text class="bd">省县区</text>
+      <text class="ft">{{region}}</text>
+    </view>
+  </picker>
+  <navigator open-type='navigate' url="/pages/landlord-mine/modify-apartmentName/modify-apartmentName?type=detailAddress">
+    <view class="set">       
+      <text class="bd">详细地址</text>
+      <text class="ft">{{detailAddress}}</text>
+    </view>
+  </navigator>
+ <navigator open-type='navigate' url="/pages/landlord-mine/modify-apartmentName/modify-apartmentName?type=tel">
+    <view class="set">       
+      <text class="bd">公寓电话</text>
+      <text class="ft">{{apartmentTel}}</text>
+    </view>
+  </navigator>
+</view>

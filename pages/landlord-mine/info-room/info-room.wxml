@@ -1,0 +1,30 @@
+<!--pages/landlord-mine/info-room/info-room.wxml-->
+<view class="ir-menu" wx-if="{{roomData!==''}}">
+  <view wx:for="{{roomData}}" wx:key="index">
+    <navigator url="/pages/landlord-mine/modify-room/modify-room?pageType=change&roomId={{item._id}}" class="row">
+      <view class="set">
+        <view class="bd">
+          <view class="title">{{item.typeName}}</view>
+          <view class="info">
+            <text class="type" wx:if="{{item.houseType[0]+item.houseType[1]>1}}">{{item.houseType[0]}}室{{item.houseType[1]}}厅</text>
+            <text class="type" wx:if="{{item.houseType[0]+item.houseType[1]<=1}}">单间</text>
+            <text class="rent">￥{{item.monthRent}}/月</text>
+          </view>
+        </view>
+        <view class="ft"></view>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+<!-- 没有数据时显示的页面 -->
+<view class="container no-data" wx-if="{{roomData ==''}}">
+  暂时没有数据，快去添加吧
+</view>
+
+<view class="footer-btn">
+  <button type="button" open-type='navigate' bindtap='toAddPage'>
+    <text class="add-icon iconfont icon-tianjia"></text>
+    <text class="add-font">新增房间类型</text>
+  </button>  
+</view>

@@ -1,0 +1,29 @@
+<!--pages/landlord-mine/info-fee/info-fee.wxml-->
+<view class="ia-menu">
+  <picker range="{{waterFeeArray}}" bindchange="changeWaterFee" mode="multiSelector" value="{{windex}}">
+    <view class="set">       
+      <text class="bd">水费</text>
+      <text class="ft">{{waterFeeArray[0][windex[0]]}}.{{waterFeeArray[1][windex[1]]}} 元/吨</text>
+    </view>
+  </picker>
+  <picker range="{{waterFeeArray}}" bindchange="changeElectricityFee" mode="multiSelector" value="{{eindex}}">
+    <view class="set">       
+      <text class="bd">电费</text>
+      <text class="ft">{{waterFeeArray[0][eindex[0]]}}.{{waterFeeArray[1][eindex[1]]}} 元/度</text>
+    </view>
+  </picker>   
+  <picker range="{{managementFeeArray}}" bindchange="changeManagementFee" mode="multiSelector" value="{{mindex}}" >
+    <view class="set">       
+      <text class="bd">管理费</text>
+      <text class="ft">
+        <text wx-if="{{managementFeeArray[0][mindex[0]]!==0}}">{{managementFeeArray[0][mindex[0]]}}</text><text wx-if="{{managementFeeArray[0][mindex[1]]!==0||managementFeeArray[0][mindex[0]]!==0}}">{{managementFeeArray[0][mindex[1]]}}</text>{{managementFeeArray[0][mindex[2]]}} 元/月
+      </text>
+    </view>
+  </picker>
+  <picker range="{{managementFeeArray}}" bindchange="changeNetworkFee" mode="multiSelector" value="{{nindex}}" >
+    <view class="set">       
+      <text class="bd">网费</text>
+      <text class="ft"><text wx-if="{{managementFeeArray[0][nindex[0]]!==0}}">{{managementFeeArray[0][nindex[0]]}}</text><text wx-if="{{managementFeeArray[0][nindex[0]]!==0||managementFeeArray[0][nindex[1]]!==0}}">{{managementFeeArray[0][nindex[1]]}}</text>{{managementFeeArray[0][nindex[2]]}} 元/月</text>
+    </view>
+  </picker>
+</view>

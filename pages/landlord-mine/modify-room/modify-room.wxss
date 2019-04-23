@@ -1,0 +1,108 @@
+/* pages/landlord-mine/modify-room/modify-room.wxss */
+page{
+  background-color: #f8f8f8;
+  font-size:17px;
+}
+.cells-title{
+  padding:0 15px;
+  margin-top:10px;
+  font-size:14px;
+  color:#808080;
+}
+.cell{
+  padding:10px 15px;
+  margin-bottom: 1px;
+  background-color:#fff;
+}
+.important{
+  color:#e64340;
+}
+.cell .hd{
+  width:105px;
+  float:left;
+}
+.cell .bd{
+  width:100%;
+  position: relative;
+}
+.rent-cell .bd::after{
+  content:"元/月";
+  position:absolute;
+  margin-top:-25px;
+  right:3px;
+  color:#808080;
+}
+.area-cell .bd::after{
+  content:"平方米";
+  position:absolute;
+  margin-top:-25px;
+  right:3px;
+  color:#808080;
+}
+.config-cell .bd input{
+  opacity:0;
+}
+.config-cell .icon-group{
+  clear: both;
+  width:100%;
+  background-color: #fff;
+  height: 230px;
+}
+.config-cell .icon-group .icon{
+  width: 20%;
+  float:left;
+  text-align: center;
+  position: relative;
+  margin-top:14px;
+  font-size:12px;
+}
+.config-cell .icon-group .icon image{
+  width:40px;
+  height: 40px;
+}
+/* 蒙版 */
+.config-cell .icon-group .icon .mask{
+  position: absolute;
+  top:0;
+  bottom:0;
+  width:calc(100% - 10px);
+  height: 100%;
+  margin:0 5px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+.config-cell .icon-group .icon .mask icon{
+  margin-top:calc(50% - 20px)
+}
+.image-cell{
+  margin-bottom:0;
+}
+.image-cell .bd text{
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 105px);
+  text-align: right;
+  color:#808080;
+}
+images-cell-add{
+  background: #fff;
+  padding: 0 15px;
+}
+.description-cell .bd textarea{
+  padding-left:105px;
+}
+
+.btns{
+  padding:15px; 
+}
+.btns button{
+  border:none;
+  margin-top:15px;
+  border-radius:10px;
+}
+.btns .subBtn{
+  border:1px solid #09bb07;
+}
+.btns .delBtn{
+  border:1px solid rgba(0, 0, 0, 0.2);
+}

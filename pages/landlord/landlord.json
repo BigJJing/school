@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "firstPage":"/component/landlord-component/firstPage-component/firstPage-component",
+    "apartmentPage": "/component/landlord-component/apartmentPage-component/apartmentPage-component",
+    "communityPage": "/component/landlord-component/communityPage-component/communityPage-component",
+    "minePage": "/component/landlord-component/minePage-component/minePage-component"
+  }
+}

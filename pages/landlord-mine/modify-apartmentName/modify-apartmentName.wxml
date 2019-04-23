@@ -1,0 +1,14 @@
+<!--pages/landlord-mine/modify-apartmentName/modify-apartmentName.wxml -->
+
+<view class="wrapper">
+  <view wx:if="{{pageType=='name'}}">
+    <input type="text" placeholder="{{apartmentName}}" class="name" bindinput="inputChange"/>
+  </view>
+  <view wx:if="{{pageType=='tel'}}">
+    <input type="text" placeholder="{{apartmentTel}}" class="name" bindinput="inputChange"/>
+  </view>
+  <view wx:if="{{pageType=='detailAddress'}}">
+    <input type="text" placeholder="{{detailAddress}}" class="name" bindinput="inputChange"/>
+  </view>
+  <button type="primary" class="btn" bindtap="saveApartmentName">保存</button>
+</view>

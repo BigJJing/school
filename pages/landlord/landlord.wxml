@@ -1,0 +1,17 @@
+<!--pages/landlord/landlord.wxml-->
+<!-- 底部切换菜单 -->
+<view class="tab-bar">
+  <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
+    <view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
+        <view class="{{item.iconClass}} icons"></view>
+        <text class="icon-text">{{item.text}}</text>
+    </view>
+  </block>
+</view>
+
+<view class="main">
+  <firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
+  <apartmentPage wx:if="{{nowPage=='apartmentPage'}}"></apartmentPage>
+  <communityPage wx:if="{{nowPage=='communityPage'}}"></communityPage>
+  <minePage wx:if="{{nowPage=='minePage'}}"></minePage>
+</view>
