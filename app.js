@@ -17,7 +17,7 @@ App({
         wx.request({
           url: url,
           success(res){
-            that.globalData.openId = res.data.openid
+            that.globalData.openId = res.data.openid;
           }
         })
       }
@@ -31,7 +31,18 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              //将用户信息存入数据库
+              wx.cloud.init();
+              const db=wx.cloud.database();
+              db.collection("users").add({
+                data:{
+                  avatar:res.userInfo.avatarUrl,
+                  userName:res.userInfo.nickName
+                },
+                success(res){
+                  console.log(res)
+                }
+              })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

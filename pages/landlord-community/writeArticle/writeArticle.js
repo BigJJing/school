@@ -71,6 +71,7 @@ Page({
   publishArticle:function(e){
     //时间，文章内容，图片
     console.log(e)
+    console.log(app.globalData.userInfo)
     var that = this;
     var imageFiles = that.data.files;
     if (e.detail.value.article===""){
@@ -112,7 +113,9 @@ Page({
                   time: now,
                   article: e.detail.value.article,
                   images: imageFiles,
-                  images_fileID: that.data.images_fileID
+                  images_fileID: that.data.images_fileID,
+                  author:app.globalData.userInfo.nickName,
+                  avatar:app.globalData.userInfo.avatarUrl
                 },
                 success(res) {
                   wx.showToast({

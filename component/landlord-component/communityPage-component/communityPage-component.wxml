@@ -41,19 +41,25 @@
   <view class="community_main">
 
     <!-- 说说页面 -->
+  
     <view class="articles" wx-if="{{nowPage==='articles'}}">
-      <view class="box" wx:for="{{articleData}}">
+      <view class="box" wx:for="{{articleData}}" wx:for-item="ac" wx:for-index="aIndex">
         <view class="top">
-          <view class="img"><image src="/static/images/notLogin.png"></image></view>
-          <view class="name">name</view>
+          <view class="img"><image src="{{ac.avatar}}"></image></view>
+          <view class="name">{{ac.author}}</view>
         </view>
         <view class="center">
-          <view class="txt">{{item.article}}</view>
-          <view class="pics">
-            <view class="pic" wx:for="{{item.images}}">
-              <image src="{{item}}"></image>
+          <view class="txt">{{ac.article}}</view>
+          
+          <view class="pics {{ac.images_fileID.length>3?'highBox':'shortBox'}}">
+            <view wx:for="{{ac.images_fileID}}" wx:for-item="im" wx:key="iIndex" >
+                <image src="{{im}}"></image>
             </view>
           </view>
+        </view>
+        <view class="bottom">
+          <span bindtap="doLike" data-id="{{ac._id}}" data-num="{{aIndex}}" class="iconfont {{isLike[aIndex]===1?'icon-xihuan':'icon-xihuan1'}}"></span>
+          <span class="iconfont icon-pinglun"></span>
         </view>
       </view>
     </view>

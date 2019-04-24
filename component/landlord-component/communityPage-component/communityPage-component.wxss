@@ -80,7 +80,9 @@
 
 
 
-
+.community{
+  margin-bottom:70px;
+}
 .community .weui-search-bar{
   border:none;
   background-color: transparent;
@@ -98,6 +100,7 @@
   right:50rpx;
   overflow: hidden;
   transition:width 0.5s ease-in-out;
+  z-index:99;
 }
 .community .add{
   height: 100rpx;
@@ -111,6 +114,7 @@
   right:50rpx;
   overflow: hidden;
   transition:width 0.5s ease-in-out;
+  z-index:99;
 }
 .community .mine view{
   width: 100rpx;
@@ -177,6 +181,7 @@ width:100rpx;
   left:0px;
   width: 100%;
   background: #f8f8f8;
+  z-index: 9;
 }
 .community .header .tab{
   height: 50rpx;
@@ -202,7 +207,7 @@ width:100rpx;
   margin-top:160rpx;
 }
 .community .community_main .articles .box{
-  border:1px solid red;
+  border-bottom:1px solid #dddddd;
   padding:20rpx;
 }
 .community .community_main .articles .box .top{
@@ -230,9 +235,44 @@ width:100rpx;
   padding-left:30rpx;
 }
 .community .community_main .articles .box .center{
-
+  margin:5px 0;
 }
 .community .community_main .articles .box .center .txt{
   font-size:30rpx;
   color:#333;
+  margin-bottom: 5px;
+}
+.community .community_main .articles .box .center  .pics view{
+  float:left;
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  position: relative;
+  margin-right:10rpx;
+  margin-bottom:10rpx;
+}
+.community .community_main .articles .box .center  .pics view image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+}
+.highBox{
+  height: 400rpx;
+}
+.shortBox{
+  height: 205rpx;
+}
+.community .community_main .articles .box .bottom{
+  text-align: right;
+}
+.community .community_main .articles .box .bottom span{
+  margin:0 10rpx;
+  font-size:50rpx;
+  color:#666;
+  line-height:20rpx;
+
+}
+.community .community_main .articles .box .bottom .icon-xihuan{
+  color:#E35F6D
 }
