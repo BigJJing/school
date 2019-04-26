@@ -1,0 +1,14 @@
+<!--pages/landlord-community/comment/comment.wxml-->
+<view class="comment-page">
+    <view class="main">
+        <view class="nothing" wx-if="{{comments==''}}">
+            还没有人评价哦~
+        </view>
+        <view wx-else>
+            2522
+        </view>
+    </view>
+    <view class="footer">
+        
+    </view>
+</view>

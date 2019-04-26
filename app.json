@@ -13,6 +13,7 @@
     "pages/landlord-community/writeArticle/writeArticle",
     "pages/landlord-community/writeActive/writeActive",
     "pages/landlord-community/writeManagement/writeManagement",
+    "pages/landlord-community/comment/comment",
     "pages/renter/renter",
     "pages/public/notLogin/notLogin"
   ],
