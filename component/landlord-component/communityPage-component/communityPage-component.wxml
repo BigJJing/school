@@ -53,13 +53,13 @@
           
           <view class="pics {{ac.images_fileID.length>3?'highBox':'shortBox'}}">
             <view wx:for="{{ac.images_fileID}}" wx:for-item="im" wx:key="iIndex" >
-                <image src="{{im}}"></image>
+                <image src="{{im}}" mode="aspectFill" data-src="{{im}}"></image>
             </view>
           </view>
         </view>
         <view class="bottom">
-          <span bindtap="doLike" data-id="{{ac._id}}" data-num="{{aIndex}}" class="iconfont {{isLike[aIndex]===1?'icon-xihuan':'icon-xihuan1'}}"></span>
-          <span class="iconfont icon-pinglun"></span>
+          <navigator url="#"><span bindtap="doLike" data-id="{{ac._id}}" data-num="{{aIndex}}" class="iconfont {{isLike[aIndex]===1?'icon-xihuan':'icon-xihuan1'}}"></span></navigator> 
+          <navigator url="/pages/landlord-community/comment/comment?id={{ac._id}}"><span class="iconfont icon-pinglun"></span></navigator> 
         </view>
       </view>
     </view>
