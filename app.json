@@ -1,7 +1,7 @@
 {
-  "pages": [
+  "pages": ["pages/index/index",
     "pages/landlord/landlord",
-    "pages/index/index",
+    
     "pages/landlord-mine/info-apartment/info-apartment",
     "pages/landlord-mine/modify-apartmentName/modify-apartmentName",
     "pages/landlord-mine/info-renter/info-renter",
