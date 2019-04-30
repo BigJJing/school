@@ -3,8 +3,8 @@
     <text>选择身份就可以进入相应界面啦</text>
   </view>
   <view class="btns">
-    <button type="button" id="landlord" bindtap="toLandlord">我是房东</button>
-    <button type="button" id="renter" bindtap=''>我是租客</button>
+    <button type="button" id="landlord" bindtap="toLandlord" open-type="getUserInfo" bindgetuserinfo="getUserInfo">我是房东</button>
+    <button type="button" id="renter" bindtap='' open-type="getUserInfo" bindgetuserinfo="getUserInfo">我是租客</button>
   </view>
   <landlord_tabBar />
 
