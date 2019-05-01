@@ -5,7 +5,6 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -16,9 +15,12 @@ App({
         var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + appSecret + '&js_code='+code+'&grant_type=authorization_code'
         wx.request({
           url: url,
-          success(res){
+          success(res){ 
             that.globalData.openId = res.data.openid;
-            console.log(res.data.openid)
+            //由于这里是网络请求，可能会在 Page.onLoad 之后才返回
+            if (that.useropenIdReadyCallback) {
+              that.useropenIdReadyCallback(res)
+            }
           }
         })
       }
@@ -33,18 +35,7 @@ App({
               console.log(res.userInfo)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              //将用户信息存入数据库
-              wx.cloud.init();
-              const db=wx.cloud.database();
-              db.collection("users").add({
-                data:{
-                  avatar:res.userInfo.avatarUrl,
-                  userName:res.userInfo.nickName
-                },
-                success(res){
-                  console.log(res)
-                }
-              })
+
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

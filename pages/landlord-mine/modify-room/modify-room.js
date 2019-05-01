@@ -14,9 +14,10 @@ Page({
     dindex:[0,0],    //押付的value
     roomConfig:[],  //房间配置的集合，通过数据库获得
     roomConfigSelected:[], //已选择的房间配置
-    roomImages: [], 
-    roomImageNum: 0,
-    isSubmit:false   //是否提交表单成功
+    isSubmit:false,   //是否提交表单成功
+    files: [],
+    images_fileID:[],
+    images_fileID_before:[]
   },
 
   /**
@@ -33,10 +34,7 @@ Page({
           roomConfig:res.data
         })
       }
-    })
-
-    
-    
+    })    
   },
 
   /**
@@ -67,6 +65,7 @@ Page({
         _id: id
       }).get({
         success(res) {
+          console.log(res)
           var data = res.data[0];
           var roomConfig = that._findSelectedRoomConfig(data.config)
           //获取roomConfigSelected
@@ -76,37 +75,18 @@ Page({
             dindex: data.deposit,    //押付的value
             roomConfigSelected: roomConfig.roomConfigSelected, //已选择的房间配置
             roomConfig: roomConfig.roomConfig,
-            roomImages: data.images,
-            roomImageNum: data.images.length,
             typeName: data.typeName,
             monthRent: data.monthRent,
             area: data.area,
             publishTitle: data.publishTitle,
             publishDescription: data.publishDescription,
-            existenceImage: data.images
+            files: data.images,
+            images_fileID:data.images_fileID,
+            images_fileID_before:data.images_fileID
           })
 
         }
       })
-    }
-  },
-  onUnload: function(){
-    console.log(this.data.isSubmit)
-    //没有提交表单，且点击了返回按钮，则要清除当前已经添加进云文件中的图片
-    var that=this
-    if (!that.data.isSubmit){
-      console.log(that.data.roomImages);
-      var nowImages = that.data.roomImages;
-      var preImages = that.data.existenceImage;
-      var images=[]
-      for (var i in nowImages){
-        for(var j in preImages){
-          if (preImages[j] !== nowImages[i]){
-            images.push(nowImages[i])
-          }
-        }
-      console.log(images)
-      }
     }
   },
   /**
@@ -166,16 +146,6 @@ Page({
       arr.splice(index,1);
     }
   },
-
-  imagesEvent:function(e){
-    var roomImages=e.detail.imageData;
-    var roomImageNum = roomImages.length;
-    console.log(roomImages)
-    this.setData({
-      roomImages: roomImages,
-      roomImageNum: roomImageNum
-    })
-  },
   //提交表单
   submitForm:function(e){
     var that=this
@@ -184,6 +154,7 @@ Page({
     var houseType = that.data.rindex;   //房型
     var deposit = that.data.dindex;     //押付
     var config = that._doDealWithConfig(that.data.roomConfigSelected);
+    var imageFiles = that.data.files;
     if (typeName == ""){
       wx.showToast({
         title: '类型名不能为空哟',
@@ -221,37 +192,57 @@ Page({
             return;
           }
           else{
-            //直接添加
-            db.collection('roomType').add({
-              data: {
-                typeName: typeName,
-                monthRent: monthRent,
-                houseType: houseType,
-                deposit: deposit,
-                area: e.detail.value.area,
-                config: config,
-                images: that.data.roomImages,
-                publishTitle: e.detail.value.publishTitle,
-                publishDescription: e.detail.value.publishDescription
-              },
-              success(res) {
-                console.log(res)
-                that.setData({
-                  isSubmit:true
-                })
-                //成功后的提示
-                wx.showToast({
-                  title: '提交成功',
-                  icon: 'success',
-                  duration: 1000
-                })
-                setTimeout(function () {
-                  wx.navigateBack({
-                    detal: 1
+            //上传图片
+            for (var i = 0; i < imageFiles.length; i++) {
+              var imageUrl = imageFiles[i].split("/");
+              var name = imageUrl[imageUrl.length - 1]
+              var images_fileID = that.data.images_fileID
+              wx.cloud.uploadFile({
+                cloudPath: "landlord-mine/apartment/"+app.globalData.openId+"/"+ name,
+                filePath: imageFiles[i],
+                success: res => {
+                  images_fileID.push(res.fileID);
+                  that.setData({
+                    images_fileID: images_fileID
                   })
-                }, 1000)
-              }
-            })
+                  if (images_fileID.length === imageFiles.length) {
+                    //直接添加
+                    db.collection('roomType').add({
+                      data: {
+                        typeName: typeName,
+                        monthRent: monthRent,
+                        houseType: houseType,
+                        deposit: deposit,
+                        area: e.detail.value.area,
+                        config: config,
+                        publishTitle: e.detail.value.publishTitle,
+                        publishDescription: e.detail.value.publishDescription,
+                        images: imageFiles,
+                        images_fileID: that.data.images_fileID
+                      },
+                      success(res) {
+                        console.log(res)
+                        that.setData({
+                          isSubmit:true
+                        })
+                        //成功后的提示
+                        wx.showToast({
+                          title: '提交成功',
+                          icon: 'success',
+                          duration: 1000
+                        })
+                        setTimeout(function () {
+                          wx.navigateBack({
+                            detal: 1
+                          })
+                        }, 1000)
+                      }
+                    })
+                  }
+                }
+              })
+            }
+            
           }
           
         },
@@ -259,46 +250,73 @@ Page({
           console.log(res);
         }
       })
-    }else{
+    }
+    else{
       //更新数据
-      db.collection('roomType').where({
-        _openid: app.globalData.openId,
-        typeName: typeName
-      }).get({
-        success(res){
-          var id=res.data[0]._id;
-          db.collection('roomType').doc(id).update({
-            data:{
-              typeName: typeName,
-              monthRent: monthRent,
-              houseType: houseType,
-              deposit: deposit,
-              area: e.detail.value.area,
-              config: config,
-              images: that.data.roomImages,
-              publishTitle: e.detail.value.publishTitle,
-              publishDescription: e.detail.value.publishDescription
-            },
-            success(res){
-              console.log(res)
-              that.setData({
-                isSubmit: true
+      //删除所有图片
+
+      //上传图片
+      console.log(1)
+      for (var i = 0; i < imageFiles.length; i++) {
+        var imageUrl = imageFiles[i].split("/");
+        var name = imageUrl[imageUrl.length - 1]
+        var images_fileID = that.data.images_fileID
+        wx.cloud.uploadFile({
+          cloudPath: "landlord-mine/apartment/"+app.globalData.openId+"/"+ name,
+          filePath: imageFiles[i],
+          success: res => {
+            images_fileID.push(res.fileID);
+            that.setData({
+              images_fileID: images_fileID
+            })
+            if (images_fileID.length === imageFiles.length) {
+              //数据
+              db.collection('roomType').where({
+                _openid: app.globalData.openId,
+                typeName: typeName
+              }).get({
+                success(res){
+                  console.log(res)
+                  var id=res.data[0]._id;
+                  db.collection('roomType').doc(id).update({
+                    data:{
+                      typeName: typeName,
+                      monthRent: monthRent,
+                      houseType: houseType,
+                      deposit: deposit,
+                      area: e.detail.value.area,
+                      config: config,
+                      publishTitle: e.detail.value.publishTitle,
+                      publishDescription: e.detail.value.publishDescription,
+                      images: imageFiles,
+                      images_fileID: that.data.images_fileID
+                    },
+                    success(res){
+                      console.log(res)
+                      that.setData({
+                        isSubmit: true
+                      })
+                      //成功后的提示
+                      wx.showToast({
+                        title: '修改成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      setTimeout(function () {
+                        wx.navigateBack({
+                          detal: 1
+                        })
+                      }, 1000)
+                    }
+                  })
+                }
               })
-              //成功后的提示
-              wx.showToast({
-                title: '修改成功',
-                icon: 'success',
-                duration: 1000
-              })
-              setTimeout(function () {
-                wx.navigateBack({
-                  detal: 1
-                })
-              }, 1000)
             }
-          })
-        }
-      })
+          }
+        })
+      }
+     
+      
     }
   },
   //将房间配置的id记录
@@ -365,6 +383,34 @@ Page({
         })
       }
     })
-  }
+  },
+  chooseImage: function (e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        that.setData({
+          files: that.data.files.concat(res.tempFilePaths)
+        });
+        
+      }
+    })
+  },
+  previewImage: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.files // 需要预览的图片http链接列表
+    })
+  },
+  deleteImage:function(e){
+    var index=e.target.dataset.index;
+    var files=this.data.files;
+    files.splice(index-1,1);
+    this.setData({
+      files:files
+    })
+  },
 
 })

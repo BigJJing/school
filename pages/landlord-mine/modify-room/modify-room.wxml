@@ -1,9 +1,9 @@
 <!--pages/landlord-mine/modify-room/modify-room.wxml-->
 <view class="wrapper">
   <form bindsubmit='submitForm'>
-      <!-------- 基本信息（必填）------->
+      <!--基本信息（必填）-->
     <view class="cells-title">基本信息</view>
-    <!--类型名 -->
+    <!--  类型名  -->
     <view class="cell">
       <view class="hd">
         <label>类型名<text class="important">*</text></label>
@@ -74,6 +74,7 @@
       </view> 
     </view>
     <!-- 图片 -->
+    <!--
     <view class="cell image-cell">
       <view class="hd">
         <label>图片</label>
@@ -86,7 +87,9 @@
       <uploadImages bind:myevent="imagesEvent" wx-if="{{pageType == 'add'}}"></uploadImages>
       <uploadImages bind:myevent="imagesEvent" images="{{existenceImage}}" wx-if="{{pageType == 'change'}}"></uploadImages>
     </view>
-    <!----------- 其他信息 ------------->
+    -->
+    
+    <!-- 其他信息 -->
     <view class="cells-title">默认发布信息</view>
     <!-- 租金 -->
     <view class="cell">
@@ -106,6 +109,31 @@
       </view>
     </view>
     
+    <view class="cell image-cell">
+      <view class="hd">
+        <label>图片</label>
+      </view>
+      <view class="bd">
+        <text>{{files.length}}/6</text>
+      </view>  
+      <view class="weui-cell__bd">
+          <view class="weui-uploader">
+              <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files" id="uploaderFiles">
+                      <block wx:for-items="{{files}}" wx:key="{{index}}">
+                          <view class="weui-uploader__file"  id="{{item}}">
+                              <i bindtap="deleteImage" data-index="{{index}}">×</i>
+                              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" bindtap="previewImage"/>
+                          </view>
+                      </block>    
+                  </view>
+                  <view class="weui-uploader__input-box" wx:if="{{files.length<6}}">
+                      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+              </view>
+          </view>
+      </view>
+    </view>
     <view class="btns">
       <button form-type='submit' class="subBtn">提交</button>
       <button class="delBtn" wx:if="{{pageType=='change'}}" bindtap="deleteRoomType">删除</button>

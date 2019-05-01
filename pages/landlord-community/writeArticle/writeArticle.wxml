@@ -19,7 +19,7 @@
                                     </view>
                                 </block>    
                             </view>
-                            <view class="weui-uploader__input-box">
+                            <view class="weui-uploader__input-box" wx:if="{{files.length<6}}">
                                 <view class="weui-uploader__input" bindtap="chooseImage"></view>
                             </view>
                         </view>

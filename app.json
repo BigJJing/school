@@ -1,5 +1,6 @@
 {
-  "pages": ["pages/index/index",
+  "pages": [
+    "pages/index/index",
     "pages/landlord/landlord",
     
     "pages/landlord-mine/info-apartment/info-apartment",

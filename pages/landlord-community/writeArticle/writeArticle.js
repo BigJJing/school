@@ -70,21 +70,11 @@ Page({
   },
   publishArticle:function(e){
     //时间，文章内容，图片
-    console.log(e)
-    console.log(app.globalData.userInfo)
     var that = this;
     var imageFiles = that.data.files;
     if (e.detail.value.article===""){
       wx.showToast({
         title: '内容不能为空哟',
-        icon: 'none',
-        duration: 1000
-      });
-      return false
-    }
-    else if (imageFiles.length>6){
-      wx.showToast({
-        title: '图片不能超过六张哟',
         icon: 'none',
         duration: 1000
       });
