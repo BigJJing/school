@@ -5,13 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    comments:[]   //[["Jan","content...",[..]]
+    comments:[],   //[["Jan","content...",[..]]
+    commentPanel:"small-panel",  //small-panel/big-panel
+    isOpen:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
     //得到此条说说的评论
     var id=options.id;
     wx.cloud.init();
@@ -23,6 +26,19 @@ Page({
         if(comments==undefined){
           comments=[]
         }
+        that.setData({
+          comments: comments
+        })
+        var title = res.data.author + " ( " + comments.length+" 评论)"
+        //基本设置
+        wx.setNavigationBarColor({
+          backgroundColor: "#fff",
+          frontColor: "#000000",
+          animation: {}
+        })
+        wx.setNavigationBarTitle({
+          title: title
+        })
       }
     })
   },
@@ -38,49 +54,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //基本设置
-    wx.setNavigationBarColor({
-      backgroundColor: "#fff",
-      frontColor: "#000000",
-      animation: {}
+    
+  },
+  //自定义事件
+
+  openComment:function(){
+    var that=this;
+    that.setData({
+      commentPanel:"big-panel",
+      isOpen:true
     })
-    wx.setNavigationBarTitle({
-      title: '评论'
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
